@@ -1,0 +1,29 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class Main extends CI_Controller {
+
+  public function view($page = 'home') {
+    if ( ! file_exits ( 'application/views/pages/' . $page . '.php')) {
+      // no page for that
+      show_404();
+    }
+    
+    $data['title'] = ucfirst( $page );
+    
+    $this->load->view('templates/header', $data);
+    $this->load->view('pages/' . $page, $data);
+    $this->load->view('templates/header', $data);
+
+
+	/*
+	public function index()
+	{
+		$data['page_title'] = "Ignition";
+		$data['page_id'] = "home";
+		$this->load->view('head', $data);
+	}
+	*/
+}
+
+/* End of file main.php */
+/* Location: ./application/controllers/main.php */
